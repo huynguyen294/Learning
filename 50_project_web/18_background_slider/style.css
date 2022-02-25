@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('https://i.pinimg.com/originals/38/6f/47/386f47c88a7aaa497ec6edc1c02cc9b6.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  transition: 0.4s ease;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.slider-container {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); /* multi box shawdow: nhiều bóng đè lên
+  nhau, có thể thử nghiệm bằng cách cho nó khác màu và khác 
+  size */
+  height: 70vh;
+  width: 70vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: -15vh; /* 2 dòng top left này để căn tấm ảnh ra giữa 
+  khung hình một chút */
+  left: -15vw;
+  z-index: 1;
+  transition: 0.4s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.arrow {
+  position: fixed;
+  background-color: transparent;
+  padding: 20px;
+  font-size: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 2px orange solid;
+  cursor: pointer;
+}
+
+.arrow:focus {
+  outline: none;
+}
+
+.left-arrow {
+  left: calc(
+    15vw - 65px
+  ); /* slider-container chiếm 70 vw nên 2 bên còn lại mỗi 
+  bên 15vw, trừ đi 65px là width của button -> có thể ngắn hơn chút để button nằm dưới slide*/
+}
+
+.right-arrow {
+  right: calc(15vw - 65px);
+}

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  background-color: #fff;
+  background-image: linear-gradient(
+    to bottom,
+    #eafbff 0%,
+    #eafbff 50%,
+    #5290f9 50%,
+    #5290f9 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* boxshadow: giá trị đầu tiên 0 là h-offset(độ lệch ngang)
+giá trị thứ 2 2px là độ lệch dọc
+giá trị thứ 3 là blur
+giá trị thứ 4 nếu có là spread, nếu không có thì là color
+*/
+
+nav {
+  background-color: #fff;
+  padding: 0;
+  width: 80px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: width 0.6s linear;
+}
+
+nav.active {
+  width: 350px;
+}
+
+/* Hiệu ứng khi chiều dài thay đổi cho thẻ nav */
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 0;
+  transition: width 0.6s linear;
+}
+
+nav.active ul {
+  width: 100%;
+}
+
+nav ul li {
+  transform: rotateX(0deg);
+  opacity: 0;
+  transition: transform 0.6s linear, opacity 0.6s linear;
+}
+
+/* Hiệu ứng xoay cho thẻ a */
+
+nav.active ul li {
+  transform: rotateX(360deg);
+  opacity: 1;
+}
+
+nav li a {
+  position: relative;
+  margin: 0 10px;
+  color: #000;
+  text-decoration: none;
+}
+
+.icon {
+  background-color: #fff;
+  height: 30px;
+  width: 30px;
+  position: relative;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.icon:focus {
+  outline: none;
+}
+
+/* Lấy thẻ button icon làm gốc để dùng possion định vị cho line1 line2 */
+
+.icon .line {
+  position: absolute;
+  background-color: #5290f9;
+  height: 1.5px;
+  width: 20px;
+  padding: 0;
+  top: 10px;
+  left: 5px;
+  transition: transform 0.6s linear;
+}
+
+.icon .line2 {
+  top: auto;
+  bottom: 10px;
+}
+
+/* Khi active thì line1 sẽ xoay -756 độ để thành một đường chéo
+line 2 sẽ xoay 765 độ để thành đường chéo ngược lại
+line1 phải nhích lên theo trục Y 5.5px để hợp thành hình dấu x
+line2 nhích xuống 5.5px */
+
+nav.active .icon .line1 {
+  transform: rotate(-765deg) translateY(5.5px);
+}
+
+nav.active .icon .line2 {
+  transform: rotate(765deg) translateY(-5.5px);
+}

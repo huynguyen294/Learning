@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* 
+font: Poppins, chỉ giữ lại thuộc tính margin 
+không dùng tới các thuộc tính khác vì bài này không cần flex cho body chỉ cần flex cho main
+2 màu là primary-color: #22254b và secondary-color: #373b69
+body: background-color: primary color
+chú ý font-famaly cho search: inherit
+select cho placeholer của search bằng :: với color là #7378c5
+sử dụng tranform, stranlateY(101% để ẩn overview), thêm transision cho nó
+*/
+
+:root {
+  --primary-color: #22254b;
+  --secondary-color: #373b69;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary-color);
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+header {
+  background-color: var(--secondary-color);
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#search {
+  border: 2px solid var(--primary-color);
+  width: 15em;
+  background-color: transparent;
+  color: #fff;
+  padding: 1em;
+  border-radius: 2em;
+  font-family: inherit;
+}
+
+#search::placeholder {
+  font-size: 16px;
+  color: #7378c5;
+}
+
+#search:focus {
+  outline: none;
+  background-color: var(--primary-color);
+}
+
+main {
+  margin-top: 78.65px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie {
+  position: relative;
+  color: #fff;
+  background-color: var(--secondary-color);
+  width: 280px;
+  margin: 10px;
+  border-radius: 2px;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.movie img {
+  max-width: 100%;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5em 1em 1em;
+  height: 8em;
+}
+
+.movie-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.movie-info span {
+  height: 2.2em;
+  background-color: var(--primary-color);
+  padding: 0.5em;
+  border-radius: 4px;
+}
+
+.movie-info span.green {
+  color: green;
+}
+
+.movie-info span.orange {
+  color: orange;
+}
+
+.movie-info span.red {
+  color: red;
+}
+
+.overview {
+  border-radius: 2px;
+  background-color: #fff;
+  color: #000;
+  padding: 2em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 100%;
+  transform: translateY(101%);
+  transition: transform 0.3s ease-out;
+}
+
+.movie:hover .overview {
+  transform: translateY(0);
+}

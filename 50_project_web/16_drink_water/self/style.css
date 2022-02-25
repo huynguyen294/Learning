@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(10, 80, 225, 0.8);
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  width: 500px;
+  align-items: center;
+  text-align: center;
+}
+
+.water {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 50px;
+  height: 100px;
+  border-radius: 0 0 10px 10px;
+  color: rgba(10, 80, 225, 0.8);
+  border: 2px solid rgba(0, 20, 170, 1);
+  margin: 5px;
+  cursor: pointer;
+  padding: 0px;
+}
+
+.water-container .water:hover {
+  transform: scale(1.1);
+}
+
+.water.active {
+  background-color: #5290f9;
+  color: #fff;
+}
+
+.water.remain {
+  width: 98px;
+  height: 298px;
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+}
+
+.water.remain .drank {
+  height: 0;
+  color: rgba(0, 20, 170, 1);
+  background-color: #5290f9;
+  width: 100%;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: height all 0.6s;
+  overflow: hidden;
+}
+
+.water.remain .non-drank {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.water .drank p {
+  padding: 0;
+  margin: 0;
+}
+
+.water p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.water-container {
+  max-width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+}
