@@ -5,10 +5,13 @@
   --secondary-color: #24272c;
   --third-color: #494e59;
   --border-color: #ff7a00;
+  --border-sencond-color: #ff9c3e;
   --btn-add-height: 50px;
   --btn-add-width: 100px;
+  --btn-hidden-width: 50px;
   --input-add-width: 400px;
   --border-radius-size: 5px;
+  --btn-add-border: 2px #fff solid;
 }
 
 * {
@@ -43,9 +46,16 @@ body {
 
 .car-form #hidden-icon {
   border-radius: var(--border-radius-size);
+  width: var(--btn-hidden-width);
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.car-form #hidden-icon:hover .tooltiptext {
+  visibility: visible;
+  top: -20px;
+  right: 40px;
 }
 
 .car-form #add_btn {
@@ -55,9 +65,24 @@ body {
 
 .car-form.active #hidden-icon {
   color: #fff;
-  border-radius: var(--border-radius-size);
   z-index: 0;
   transition: transform 0.3s ease;
+}
+
+#hidden-icon:hover i {
+  transform: scale(1.5);
+}
+
+.car-form .add_btn {
+  border-radius: var(--border-radius-size);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--border-color);
+  border: 0;
+  height: var(--btn-add-height);
+  width: var(--btn-add-width);
+  cursor: pointer;
 }
 
 .car-form.active #add_btn {
@@ -68,6 +93,22 @@ body {
   button che được input không để ra kẻ hở
   */
   transition: transform 0.3s ease;
+}
+
+.car-form.active #add_btn span {
+  display: block;
+  background-color: var(--third-color);
+  border-radius: var(--border-radius-size);
+  padding: 0.8em;
+}
+
+.car-form.active #add_btn:hover span {
+  transform: scale(0.98);
+}
+
+.add_btn,
+.car-input:focus {
+  outline: none;
 }
 
 .car-form .car-input {
@@ -90,30 +131,18 @@ body {
   color: #fff;
   top: 0;
   left: var(--btn-add-width);
-  padding-left: var(--btn-add-width);
+  padding-left: var(--btn-hidden-width); /*  */
   border-radius: var(--border-radius-size);
   width: var(--input-add-width);
 }
 
-.car-form .add_btn {
-  border-radius: var(--border-radius-size);
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: var(--border-color);
-  border: 0;
-  height: var(--btn-add-height);
-  width: var(--btn-add-width);
-  cursor: pointer;
-}
-
-.add_btn,
-.car-input:focus {
-  outline: none;
+#list-sub {
+  margin: 20px 0 2px 5px;
 }
 
 .car-list {
   padding: 10px;
+  margin: 0;
   border-radius: 10px;
   width: 100%;
   position: relative;
@@ -175,8 +204,6 @@ body {
 
   /* Position the tooltip */
   position: absolute;
-  top: -35px;
-  right: -190px;
   z-index: 100;
 }
 
@@ -186,8 +213,6 @@ body {
 
 .car i:hover .tooltiptext {
   visibility: visible;
-}
-
-.car i:hover + .tooltiptext {
-  visibility: visible;
+  top: -35px;
+  right: -190px;
 }
