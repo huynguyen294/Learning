@@ -11,18 +11,22 @@ const $$ = document.querySelectorAll.bind(document)
 const app = (()=>{
     //sử dụng closure để private data
     const cars = ['Sample Car']
+    const switch_btn = $('.switch_btn')
     const carList = $('.car-list')
-    let carForm = $('.car-form')
     const carInput = $('#car-input')
     const bntAdd = $('#add_btn')
+    const html = $('html')
+    let carForm = $('.car-form')
     let btnHidden = $('#hidden-icon')
     let message = ''
+
+    console.log(switch_btn)
 
     return {
         add(car){
             if(car !== ''){
-                message = ''
-                cars.push(car)
+                let idx = cars.push(car)-1
+                message = `thêm thành công "${cars[idx]}"`
             }else{
                 message = "Erorr! Bạn chưa nhập tên xe cần thêm"
             }
@@ -33,7 +37,7 @@ const app = (()=>{
                 message = "Erorr! Chỉ còn một xe không thể xóa"
                 this.render()
             }else{
-                message = `xóa thành công ${cars[idx]}`
+                message = `xóa thành công "${cars[idx]}"`
                 cars.splice(idx, 1)
                 this.render()
             }
@@ -48,12 +52,12 @@ const app = (()=>{
         },
         init(){
             this.render()
-            carList.addEventListener('click', (e) => {
-                if(e.target.classList.contains('delete')){
-                    const itemDelete = e.target
-                    this.delete(itemDelete.dataset.index)
-                }
+
+            switch_btn.addEventListener('click', ()=>{
+                switch_btn.classList.toggle('off')
+                html.classList.toggle('light')
             })
+
             bntAdd.addEventListener('click', () => {
                 let active = false
                 carForm.classList.forEach(s => {if(s==='active'){active = true}})
@@ -66,6 +70,13 @@ const app = (()=>{
                 }
                 carForm.classList.add('active')
                 carInput.focus()
+            })
+
+            carList.addEventListener('click', (e) => {
+                if(e.target.classList.contains('delete')){
+                    const itemDelete = e.target
+                    this.delete(itemDelete.dataset.index)
+                }
             })
             
             btnHidden.addEventListener('click', () => {
