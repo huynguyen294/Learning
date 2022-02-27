@@ -1,0 +1,14 @@
+{
+  "course": [
+    {
+      "id": 1,
+      "name": "kiến thức cho người mới bắt đầu",
+      "description": "Kiến thức dành cho người mới, không phân biệt bạn theo front-end hay back-end"
+    },
+    {
+      "name": "HTML, CSS từ Zero đến Hero 1\n",
+      "description": "Trong khóa này chúng ta sẽ cùng nhau xây dựng giao diện 2 trang web là The Band & Shopee. 2",
+      "id": 2
+    }
+  ]
+}

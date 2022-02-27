@@ -1,0 +1,535 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Muli', sans-serif;
+}
+
+.clear {
+    clear: both;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.main {
+
+} 
+
+.header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 46px;
+    background-color: #000;
+    z-index: 1;
+}
+
+.nav {
+    height: 100%;
+    display: inline-block;
+}
+
+.nav > li{
+    display: inline-block;
+}
+
+.nav  li{
+    height: 100%;
+    list-style-type: none;
+    position: relative;
+}
+
+.nav  li  a {
+    color: white;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 13px 24px;
+}
+.nav li:hover .subnav{
+    display: block;
+}
+
+.nav > li:hover > a,
+.nav .subnav li:hover a{
+    /* > tác động trực tiếp 1 cấp*/
+    color: black !important;
+    background-color: #ccc !important;
+}
+
+.nav .nav-arrow-down{
+    font-size: 14px;
+}
+
+.subnav {
+    min-width: 160px;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    background-color: #fff;
+    display: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.subnav li a{
+    padding: 13px 12px;
+    text-decoration: none;
+    color: black !important;
+    text-transform: none;
+}
+
+.header .menu-mobile-btn{
+    color: #fff;
+    font-size: 20px;
+    float: right;
+    height: 100%;
+    line-height: 46px;
+    padding: 0 21px;
+    cursor: pointer;
+    display: none;
+}
+
+.header .menu-mobile-btn:hover{
+    color: #000;
+    background-color: #ccc;
+}
+
+.header .search-btn{
+    color: #fff;
+    font-size: 20px;
+    float: right;
+    height: 100%;
+    line-height: 46px;
+    padding: 0 21px;
+    cursor: pointer;
+}
+
+.header .search-btn:hover{
+    color: #000;
+    background-color: #f44336;
+}
+
+
+.slider {
+    margin-top: 46px;
+    padding-top: calc(9/16*100%);
+    background: url('../img/slider/slider.jpg');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.slider .text-content{
+    bottom: 0;
+    padding: 32px;
+    width: 100%;
+    text-align: center;
+    color: #ccc;
+    position: absolute;
+}
+.slider .text-heading{
+    font-size: 24px;
+    font-weight: 500;
+    padding: 15px;
+}
+.slider .text-description{ 
+    font-size: 15px;
+}
+
+
+.content {
+
+} 
+
+.content .content-session {
+    padding: 64px 16px 64px 16px;
+    width: 800px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.content .session-heading{
+    font-size: 30px;
+    font-weight: 500px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.content .session-sub-heading{
+    font-size: 15px;
+    text-align: center;
+    margin: 25px 0 45px 0;
+    font-style: italic;
+    opacity: 60%;
+}
+
+.content #about-content {
+    font-size: 15px;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.content #member-list{
+    padding-top: 47px;
+    width: 100%;
+}
+
+.content .member-item {
+    text-align: center;
+    float: left;
+    width: calc(100%/3);
+}
+
+.content .member-name{
+    font-size: 15px;
+}
+
+.content .member-avatar{
+    width: 154px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.tour-session{
+    background-color: #000;
+}
+
+.tikets-list{
+    border-radius: 4px;
+    background-color: #fff;
+    
+}
+
+.tikets-list li{
+    list-style-type: none;
+    font-size: 15px;
+    color: #757575;
+    padding: 11px 16px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.tikets-list .quantity{
+    float: right;
+    width: 24px;
+    height: 24px;
+    background-color: black;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin: -3;
+}
+
+.tikets-list .sold-out{
+    margin: 0;
+    float: none;
+    background-color: #f44336;
+    border-radius: 4px;
+    color: #FFF;
+    padding: 3px 4px;
+    margin-left: 18px;
+}
+/* places */
+.places-list {
+    margin: 32px -8px 0 -8px;
+    padding-bottom: 50px;
+}
+.places-item {
+    padding: 0 8px;
+    float: left;
+    width: calc(100%/3);
+}
+
+.place-img {
+    border-radius: 4px 4px 0 0;
+    width: 100%;
+    display: block;
+}
+
+.place-img:hover {
+    opacity: 0.6;
+}
+
+.place-body {
+    padding: 15px;
+    border-radius: 0 0 4px 4px;
+    font-size: 15px;
+    background-color: #fff;
+}
+.place-heading {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.place-time {
+    opacity: 0.6;
+    margin-top: 15px;
+}
+.place-desc {
+    margin-top: 15px;
+}
+.place-buy-btn {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 15px 15px 0 0;
+    display: inline-block;
+}
+
+.place-buy-btn:hover{
+    color: #000;
+    background-color: #ccc;
+}
+
+.modal{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: -100000000px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.modal a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.modal .container{
+    position: relative;
+    border-radius: 10px;
+    width: 60%;
+    height: 65%;
+    background-color: #fff;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+.modal-heading{
+    border-radius: 8px 8px 0 0;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    height: 30%;
+    background-color: #009688;
+    text-align: center;
+    padding: 45px;
+}
+
+.modal-heading h2{
+    width: 50%;
+    margin-bottom: 2px;
+    font-size: 30px;
+    display: inline;
+}
+
+.modal-heading i{
+    width: 60%;
+    display: inline;
+    font-size: 35px;
+    padding-right: 4px;
+}
+
+.modal-body{
+    border-radius: 0 0 8px 8px;
+    margin: 0px 15px 0px 15px;
+}
+
+.modal-body .form-group{
+    margin: 15px 0 15px 0;
+}
+
+.modal-body i{
+    display: inline;
+}
+
+.modal-body p{
+    display: inline;
+}
+
+.modal-body input{
+    padding: 10px;
+    border: #ccc solid 1px;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+    width: 100%;
+    height: 35px;
+}
+
+#modal-pay-btn{
+    color: #fff;
+    width: 100%;
+    background-color: #009688;
+    padding: 16px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.modal .modal-body #modal-pay-btn:hover{
+    background-color: #ccc;
+    color: #000;
+}
+
+#modal-pay-btn:hover a{
+    color: #000;
+}
+
+.model-footer{
+    margin: 0px 15px 0px 15px;
+    height: 40px;
+}
+
+.model-footer a{
+    display: inline-block;
+}
+
+.modal-close-btn{
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    width: 80px;
+    background-color: #f44336;
+}
+
+.modal-close-btn:hover{
+    background-color: #ccc;
+    color: #000;
+}
+
+.modal .modal-need-help-btn{
+    text-decoration: underline;
+    color: blue;
+    text-align: end;
+    width: 85%;
+}
+
+.close-modal{
+    border-radius: 8px;
+    right: 0;
+    width: 8%;
+    height: 10%;
+    position: absolute;
+}
+
+.close-modal a{
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+}
+
+#contact-table{
+    width: 100%;
+}
+
+#contact-table li{
+    margin-top: 5px;
+}
+
+#contact-table ul{
+    width: 300px;
+    list-style-type: none
+}
+
+#contact-table ul i{
+    margin-right: 15px;
+}
+
+#contact-input{
+    margin-left: 100px;
+}
+
+#contact-input input{
+    border: #ccc solid 1px;
+}
+
+#contact-input table{
+    width: 100%;
+}
+
+#contact-name{
+    display: inline;
+    width: 49%;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#contact-email{
+    display: inline;
+    width: 49%;
+    border-radius: 5px;
+    padding: 10px;
+    right: 0;
+}
+
+#contact-message{
+    margin-top: 5px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#send-btn{
+    width: 100%;
+    position: relative;
+}
+
+#send-btn a{
+    border-radius: 4px;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px 10px 20px;
+}
+
+#send-btn a:hover{
+    color: black ;
+    background-color: #ccc ;
+}
+
+.map-session{
+    margin-top: 110px;
+    padding-top: calc(838/1498*100%);
+    background: url('../img/map/map.jpg');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.footer {
+
+} 
+
+
+@media screen and (max-width: 46.1875em) {
+    .nav li{
+        display: block;
+    }
+    .nav{
+        overflow: hidden;
+    }
+    .header .search-btn{
+        display: none;
+    }
+    .header .menu-mobile-btn{
+        display: block;
+    }
+}

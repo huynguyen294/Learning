@@ -1,0 +1,3 @@
+- index.js là file chứa tất cả các router
+- site.js là file chứa các trong mà không tạo ra nhiều các trang con: các trang này chỉ sử dụng 1 route nên không cần phải tạo ra routes và controller
+-

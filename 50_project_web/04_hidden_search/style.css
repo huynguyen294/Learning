@@ -2,9 +2,10 @@
 
 :root {
   --btn-height: 50px;
-  --btn-width: 50px;
+  --btn-width: 100px;
+  --hidden-btn-width: 50px;
   --input-width: 250px;
-  --border-radius-size: 4px;
+  --border-radius-size: 30px;
 }
 
 * {
@@ -28,6 +29,8 @@ body {
 }
 
 .search #hidden-icon {
+  height: var(--btn-height);
+  width: var(--hidden-btn-width);
   border-radius: var(--border-radius-size);
   top: 0;
   left: 0;
@@ -39,7 +42,6 @@ body {
 }
 
 .search.active #hidden-icon {
-  border-radius: var(--border-radius-size);
   z-index: 0;
   transition: transform 0.3s ease;
 }

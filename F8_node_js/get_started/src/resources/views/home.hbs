@@ -1,18 +1,18 @@
-<div class="container">
+<div class="container mt-4">
   <div class="row">
-    <div class="col-sm-4">
-      <h3>Column 1</h3>
-      <p>Lorem ipsum dolor..</p>
-      <button class="btn btn-success">Test</button>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor..</p>
-      <button class="btn btn-primary">Test</button>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 3</h3>
-      <p>Lorem ipsum dolor..</p>
+    <div class="col-sm-6 col-lg-4">
+      <div class="card">
+        {{#if courses}}
+          {{#each courses}}
+            <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{this.name}}</h5>
+              <p class="card-text">{{this.description}}</p>
+              <a href="#" class="btn btn-primary">Mua ngay</a>
+            </div>
+          {{/each}}
+        {{/if}}
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,159 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-color: #ccc;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn_container{
+    display: flex;
+    height: 100vh;
+}
+
+.btn{
+    margin: auto;
+    display: block;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    min-width: 100px;
+    padding: 12px 48px;
+    border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.btn:hover{
+    opacity: 0.7;
+}
+
+.btn + .btn{
+    margin-left: 16px;
+}
+
+.btn-success{
+    background-color: #71BE34;
+}
+.btn-warning{
+    background-color: #ffb702;
+}
+.btn-danger{
+    background-color: #FF623D;
+}
+
+.toast{
+    width: 420px;
+    background-color: #fff;
+    display: flex;
+    padding: 16px;
+    box-shadow: 3px 3px 12px 3px #ccc;
+    margin: 20px;
+    border-left: 3.5px solid;
+    position: absolute;
+    right: -500px;
+}
+
+.toast + .toast{
+    margin-top: 110px;
+}
+
+.toast-clicked{
+    right: 0px;
+    animation: toast ease-in .5s;
+}
+
+.toast-hidden{
+    right: -500px;
+    animation: toast-hidden ease-in .5s;
+}
+
+.toast i{
+    font-size: 18px;
+    padding: 12px 20px;
+}
+
+.toast .fa-times-circle{
+    color: #ccc;
+    cursor: pointer;
+}
+
+.toast .fa-times-circle:hover{
+    color: red;
+}
+
+.toast_message p{
+    margin-top: 4px;
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.toast_message h3{
+    text-decoration-style: solid;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.toast-success{
+    border-left: 3.5px solid #04aa6d !important;
+    color: #04aa6d !important;
+}
+
+.toast-success .toast_message p{
+    color: #000 !important;
+}
+
+.toast-info{
+    border-left: 3.5px solid #007bff !important;
+    color: #007bff !important;
+}
+
+.toast-info .toast_message p{
+    color: #000 !important;
+}
+
+.toast-danger{
+    border-left: 3.5px solid #dc3545 !important;
+    color: #dc3545 !important;
+}
+
+.toast-danger .toast_message p{
+    color: #000 !important;
+}
+
+@keyframes toast{
+    from{
+        opacity: 0;
+        right: -500px;
+    }
+    to{
+        opacity: 1;
+        right: 0px;
+    }
+}
+
+@keyframes toast-hidden{
+    from{
+        opacity: 1;
+        right: 0px;
+    }
+    to{
+        opacity: 0;
+        right: -500px;
+    }
+}

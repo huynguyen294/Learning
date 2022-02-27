@@ -1,1 +1,1 @@
-console.log('abc')
+console.log('static file, main.js')

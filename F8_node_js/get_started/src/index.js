@@ -5,8 +5,14 @@ const path = require('path')
 const app = express()
 const port = 3000
 
+const route = require('./routes/index')
+const db = require('./configs/db/index')
+
+//connect to db
+db.connect()
+
 //config static file (img, css, js)
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, '/public')))
 
 //HTTP logger
 app.use(morgan('combined'))
@@ -15,13 +21,12 @@ app.use(morgan('combined'))
 app.engine('hbs', engine({
     extname: 'hbs',
 }))
-app.set('views', path.join(__dirname, 'resources/views'))
+app.set('views', path.join(__dirname, '/resources/views'))
 app.set('view engine', 'hbs')
 
 //app middleware
-app.get('/', (req, res) => {
-    return res.render('home', {title: 'Homepage'})
-})
+
+route(app)
 
 //port lister
 app.listen(port, console.log(`Example app listening at http://localhost:${port}/`))
