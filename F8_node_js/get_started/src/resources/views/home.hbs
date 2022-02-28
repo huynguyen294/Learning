@@ -1,18 +1,22 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-sm-6 col-lg-4">
-      <div class="card">
-        {{#if courses}}
-          {{#each courses}}
+    {{#if courses}}
+      {{#each courses}}
+      <div class="col-sm-6 col-lg-4">
+        <div class="card mt-2">
+          <a class="text-decoration-none text-dark" href="/courses/{{this.slug}}">
             <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
-            <div class="card-body">
+          </a>
+          <div class="card-body">
+            <a class="text-decoration-none text-dark" href="/courses/{{this.slug}}">
               <h5 class="card-title">{{this.name}}</h5>
-              <p class="card-text">{{this.description}}</p>
-              <a href="#" class="btn btn-primary">Mua ngay</a>
-            </div>
-          {{/each}}
-        {{/if}}
+            </a>
+            <p class="card-text">{{this.description}}</p>
+            <a href="#" class="btn btn-primary">Mua ngay</a>
+          </div>
+        </div>
       </div>
-    </div>
+      {{/each}}
+    {{/if}}
   </div>
 </div>

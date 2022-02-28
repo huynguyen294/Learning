@@ -1,6 +1,7 @@
 const express = require('express')
 const { engine } = require('express-handlebars');
 const morgan = require('morgan')
+const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
 const port = 3000
@@ -10,6 +11,9 @@ const db = require('./configs/db/index')
 
 //connect to db
 db.connect()
+
+//use body parser
+app.use(bodyParser.urlencoded({ extended: false }))
 
 //config static file (img, css, js)
 app.use(express.static(path.join(__dirname, '/public')))
