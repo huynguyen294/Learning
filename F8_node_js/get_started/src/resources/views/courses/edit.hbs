@@ -1,0 +1,28 @@
+<div class="mt-5">
+    <h3>Đănh khóa học</h3>
+    {{#if course}}
+        <form method="POST" action="/courses/edit?id={{course._id}}&&_method=PUT">
+            <div class="form-group mt-2">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{course.name}}" placeholder="Enter name">
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" value="{{course.description}}" placeholder="Enter description">
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="videoId">Video ID</label>
+                <input type="text" class="form-control" id="videoId" name="videoId" value="{{course.videoId}}" placeholder="Enter description">
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="level">Level</label>
+                <input type="text" class="form-control" id="level" name="level" value="{{course.level}}" placeholder="Enter description">
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-2">Lưu thay đổi</button>
+        </form>
+    {{/if}}
+</div>

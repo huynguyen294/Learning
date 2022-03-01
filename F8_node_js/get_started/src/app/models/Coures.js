@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const slug = require('mongoose-slug-generator')
-const Schema = mongoose.Schema
+const mongooseDelete = require('mongoose-delete')
 
-mongoose.plugin(slug)
+const Schema = mongoose.Schema
 
 const Course = new Schema({
     name: String,
@@ -17,4 +17,11 @@ const Course = new Schema({
     timestamps: true,// Tự động tạo  createdAt,updateAt
 })
 
+// plugin soft delete vào schema Course
+mongoose.plugin(slug)
+//plugin (gắn vào, thêm vào) slug vào thư viện mongoose
+Course.plugin(mongooseDelete, { 
+    overrideMethods: true, 
+    deleteAt: true,
+})
 module.exports = mongoose.model('Course', Course)

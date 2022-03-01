@@ -1,0 +1,99 @@
+<div class="mt-5">
+    <div>
+        <h3>Khóa học đã xóa</h3>
+        <a href="/me/stored/courses">Danh sách khóa học</a>
+    </div>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên khóa học</th>
+                <th scope="col">Trình độ</th>
+                <th class="mr-6" scope="col">Xử lí</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#if courses}}
+                {{#each courses}}
+                    <tr>
+                        {{!-- cú pháp function helper --}}
+                        <th scope="row">{{sum @index 1}}</th>
+                        <td>{{this.name}}</td>
+                        <td>{{this.level}}</td>
+                        <td>
+                            <a class="text-decoration-none me-3" id="btn-restore">khôi phục</a>
+                            <a class="text-decoration-none" {{!-- href="/courses/delete" --}} data-toggle="modal" data-id="{{this._id}}" id="btn-modal" data-target="#delete-course-modal">xóa vĩnh viễn</a>
+                        </td>
+                    </tr>
+                {{/each}}
+            {{else}}
+                <tr>
+                    <td colspan="5" class="text-center">
+                        Thùng rác trống
+                        <a href="/me/stored/courses">Trở về danh sách khóa học</a>
+                    </td>
+                </tr>
+            {{/if}}
+        </tbody>
+    </table>
+</div>
+
+{{!-- tạo form để sử dụng method post --}}
+<form id="confirm-delete" method="POST" action=""></form>
+<form id="restore-form" method="POST" action=""></form>
+
+{{!-- Comfirm modal --}}
+<div class="modal" tabindex="-1" role="dialog" id="delete-course-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa khóa học</h5>
+        <a class="close btn text-decoration-none text-dark cursor-pointer" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có muốn xóa khóa học này vĩnh viễn.</p>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-danger" id="btn-confirm-delete">Xóa vĩnh viễn</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- on show bootstrap modal --}}
+<script>
+    //ở thời điểm này jquery chưa được nạp vào bộ nhớ nên ta sử dụng
+    document.addEventListener('DOMContentLoaded', () => {
+        var btnRestore = $('#btn-restore')
+        btnRestore = btnRestore[0]
+        var formRestore = $('#restore-form')
+        formRestore = formRestore[0]
+        var button = $('#btn-modal')
+        var id = button.data('id')
+
+        //khi dialog confirm show
+        $('#delete-course-modal').on('show.bs.modal', ev => {
+            var btnDelete = $('#btn-confirm-delete')
+            btnDelete = btnDelete[0]
+            var formDelete = $('#confirm-delete')
+            formDelete = formDelete[0]
+
+           if(btnDelete){
+                btnDelete.addEventListener('click', ()=>{
+                    formDelete.action = `/courses/force?id=${id}&&_method=DELETE`
+                    formDelete.submit()
+                })
+           }
+        })
+        if(btnRestore){
+            btnRestore.addEventListener('click', ()=>{
+                formRestore.action = `/courses/restore?id=${id}&&_method=PATCH`
+                formRestore.submit()
+            })
+        }
+    })
+    
+</script>
