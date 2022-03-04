@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Type</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const courses = [
+            {
+                name: 'Html, css',
+            },
+            {
+                name: 'Responsave wedsite',
+            },
+            {
+                name: 'ReactJS',
+            },
+        ]
+        // function type
+        function Header() {
+            // trả về một jsx
+            return (
+                <div className="header">Header</div>
+            )
+        }
+
+        // tạo một class extends từ React.Component của ReactJS
+        // trong class này phải có phương thức render
+        // là phương thức mặc định của React.Component 
+        // cú pháp trả về một JSX là tương tự function
+        class Content extends React.Component {
+            render(){
+                return (
+                    <div className="content">Content</div>
+                )
+            }
+        }
+
+        //function có đối số
+        function Courses(props){
+            return (
+                <div>
+                    <i>{props.title}</i>
+                    {props.courses.map((course, idx) => {
+                        return <div key={idx}>{course.name}</div>
+                    })}
+                </div>
+            )
+        }
+
+        const jsx = (
+            <div className="container">
+                <Header/>
+                <Courses
+                    courses={courses}
+                    title="Course"
+                />
+                <Content/>
+                <div className="footer">Footer</div>
+            </div>
+        )
+
+        //render element to container
+        ReactDOM.render(jsx, document.getElementById('root'))
+    </script>
+</body>
+</html>
