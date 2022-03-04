@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX with Bable</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const reactCourse = "ReactJS F8"
+        const courses = [
+            {
+                name: 'Html, css',
+            },
+            {
+                name: 'Responsave wedsite',
+            },
+            {
+                name: 'ReactJS',
+            },
+        ]
+
+        const jsx = (
+            <ul>
+            {
+                courses.map((course, idx) => 
+                    <li key={idx.toString()}>{course.name}</li>
+                    //thêm thuộc tính key giúp React xác định được 
+                    //những mục nào đã thay đổi, được thêm vào hoặc 
+                    //bị loại bỏ. Các khóa phải được cấp cho các 
+                    //phần tử bên trong mảng để cung cấp cho các 
+                    //phần tử một danh tính ổn định (như id)
+                )
+            }
+            <li>{reactCourse}</li>
+            </ul>
+        ) //cặp ngoặc tròn để tạo khối cho phần tử không bị lỗi
+
+        ReactDOM.render(jsx, document.getElementById('root'))
+    </script>
+</body>
+</html>
