@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Type</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        
+        function Button({textContent, href, onClick}){
+            console.log(textContent, href, onClick)
+            //define component type
+            let Component = 'button'
+
+            // define component properties
+            let props = {}
+
+            // if have href change type to a tag, add href
+            if(href){
+                Component = 'a'
+                props.href = href
+            }
+            // if have onClick method, type = button, add ev OnClick
+            if(onClick){
+                props.onClick = onClick
+            }
+            return (
+                // {} here is code javascript not a obj
+                // use spread to remove {} of props
+                <Component {...props}>{textContent}</Component>
+            )
+        }
+
+        function App(){
+            return (
+                <Button
+                    textContent = "Click me!!!"
+                    //href = "https://fullstack.edu.vn/"
+                    onClick = {()=>console.log(Math.random())}
+                />
+            )
+        }
+
+        // element here is <App />, contaner is root
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+</html>

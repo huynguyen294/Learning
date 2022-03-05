@@ -48,9 +48,11 @@
             return (
                 <div>
                     <i>{props.title}</i>
-                    {props.courses.map((course, idx) => {
+                    {
+                        props.courses.map((course, idx) => {
                         return <div key={idx}>{course.name}</div>
-                    })}
+                        })
+                    }
                 </div>
             )
         }
