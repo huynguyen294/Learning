@@ -1,0 +1,23 @@
+.btn {
+  margin: 20px;
+  padding: 1em 2em;
+  border: 0;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}
+
+.primary {
+  background-color: aqua;
+}
+
+.success {
+  background-color: green;
+}
+
+.warning {
+  background-color: yellow;
+}
