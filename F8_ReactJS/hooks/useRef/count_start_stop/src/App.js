@@ -1,31 +1,40 @@
 import logo from './logo.svg';
 import {useState, useEffect, useRef} from 'react'
-import Content from './Content';
 import './App.css';
 
 function App() {
   
   const [count, setCount] = useState(60)
-  let timerId
 
-  const handleStart = ()=>{
-    timerId = setInterval(()=>{
+  const timerId = useRef()
+  const prevCount = useRef()
+
+  useEffect(()=>{
+    prevCount.current = count
+  }, [count])
+
+  const handleStart = () =>{
+    console.log('start')
+    timerId.current = setInterval(()=>{
       setCount(prev=>prev-1)
     }, 1000)
   }
 
   const handleStop = ()=>{
-    clearInterval(timerId)
+    console.log(timerId.current, 'stops')
+    clearInterval(timerId.current)
   }
+
+  console.log(count, prevCount)
   
   return (
     <div className="App">
       <h1>{count}</h1>
       <button
-        onClick={()=>handleStart}
+        onClick={()=>handleStart()}
       >start</button>
       <button
-        onClick={()=>handleStop}
+        onClick={()=>handleStop()}
       >stop</button>
     </div>
   );

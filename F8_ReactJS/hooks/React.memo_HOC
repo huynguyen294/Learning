@@ -1,0 +1,9 @@
+
+- HOC(Higher Order Component): Một phương thức của thư viện react giúp cho 
+việc ghi nhớ lại các props của component và quyết định xem có re-render 
+component đó hay không để tối ưu tốc độ
+- ứng dụng: trong trường hợp, Component cha gọi một component trong nó. Và 
+nó sử dụng useState hoặc bất cứ thứ gì re-render nó, khi đó component con 
+sẽ bị re-render theo, momo giúp ghi nhớ các props của component con và khi 
+không có sự thay đổi của props thì component con sẽ không được re-render
+- cú pháp memo(app)
