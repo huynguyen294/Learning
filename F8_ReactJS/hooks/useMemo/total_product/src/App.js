@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import {useState, useMemo} from 'react'
+import {useState, useMemo, useRef} from 'react'
 import './App.css';
 
 function App() {
@@ -7,12 +7,17 @@ function App() {
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [products, setProducts] = useState([])
+  const nameRef = useRef()
 
   const handleAdd = () => {
     setProducts([...products, {
       name: name,
       price: parseInt(price),
     }])
+
+    setName('')
+    setPrice('')
+    nameRef.current.focus()
   }
 
   /* // chạy đoạn mã này để thấy vấn đề gặp phải
@@ -36,6 +41,7 @@ function App() {
   return (
     <div className="App">
       <input type="text" 
+        ref={nameRef}
         placeholder='Enter name'
         style={{padding: '0.7em 1.5em', margin: 10}}
         value={name}
