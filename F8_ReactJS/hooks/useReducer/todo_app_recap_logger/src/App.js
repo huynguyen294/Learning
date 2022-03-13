@@ -2,15 +2,16 @@ import logo from './logo.svg';
 import { useReducer, useRef, useState } from 'react';
 import reducer, { initialState } from './reducer/reducer';
 import { setJob, addJob, deleteJob } from './reducer/actions';
+import logger from './logger';
 import './App.css';
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(logger(reducer), initialState);
   const [message, setMessage] = useState('Không có công việc nào');
   const { job, jobs } = state;
   const inputRef = useRef();
 
-  const handleSumit = (idx) => {
+  const handleSumit = () => {
     if (job !== '') {
       dispatch(addJob(job));
       dispatch(setJob(''));
