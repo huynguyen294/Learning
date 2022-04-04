@@ -1,22 +1,21 @@
-const Course = require('../models/Coures')
-const { multipleMongooseToObject } = require('../../services/mongooes')
+const Course = require('../models/Coures');
+const { multipleMongooseToObject } = require('../../services/mongooes');
 
 class MeController {
+  // [GET] /me/store/courses
+  storeCourse(req, res, next) {
+    //sử dụng promise.all để đồng bộ 2 promise
+    Promise.all([Course.find({}), Course.countDocumentsDeleted()]).then(
+      ([courses, deletedCount]) => {
+        res.json({
+          title: 'My course',
+          courses: multipleMongooseToObject(courses),
+          deletedCount,
+        });
+      }
+    );
 
-    // [GET] /me/store/courses
-    storeCourse(req, res, next){
-
-        //sử dụng promise.all để đồng bộ 2 promise
-        Promise.all([Course.find({}), Course.countDocumentsDeleted()])
-            .then(([courses, deletedCount]) => {
-                res.render('me/stored-courses', {
-                    title: "My course",
-                    courses: multipleMongooseToObject(courses),
-                    deletedCount
-                })
-            })
-
-        /* //lấy số phần tử đã bị cho vào thùng rác
+    /* //lấy số phần tử đã bị cho vào thùng rác
         Course.countDocumentsDeleted()
             .then(deletedCount => {
                 console.log(deletedCount)
@@ -31,24 +30,23 @@ class MeController {
                 })
             })
             .catch(e => console.log(e)) */
-    }
+  }
 
-    // [GET] /me/trash/courses
-    trashCourse(req, res, next){
-        Course.findDeleted({})
-            .then(courses => {
-                res.render('me/trash-courses', {
-                    title: "My trash",
-                    courses: multipleMongooseToObject(courses)
-                })
-            })
-            .catch(e => console.log(e))
-    }
+  // [GET] /me/trash/courses
+  trashCourse(req, res, next) {
+    Course.findDeleted({})
+      .then((courses) => {
+        res.render('me/trash-courses', {
+          title: 'My trash',
+          courses: multipleMongooseToObject(courses),
+        });
+      })
+      .catch((e) => console.log(e));
+  }
 
-    profile(req, res, next){
-        res.send('me/profile')
-    }
-
+  profile(req, res, next) {
+    res.send('me/profile');
+  }
 }
 
-module.exports = new MeController
+module.exports = new MeController();

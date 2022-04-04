@@ -1,14 +1,12 @@
 //Course là schema của mongoose
-const Course = require('../models/Coures')
-const { multipleMongooseToObject } = require('../../services/mongooes')
+const Course = require('../models/Coures');
+const { multipleMongooseToObject } = require('../../services/mongooes');
 
 class SiteController {
-
-    //[GET] /
-    index(req, res, next){
-
-        //crate: sample data
-        /* const sampleData = [
+  //[GET] /
+  index(req, res, next) {
+    //crate: sample data
+    /* const sampleData = [
             {
                 image: "https://files.fullstack.edu.vn/f8-prod/courses/1.png",
                 name: "JavaScript Cơ Bản",
@@ -34,13 +32,13 @@ class SiteController {
                 slug: "html-css",
             }
         ] */
-        //add sample data to db
-        /* sampleData.forEach(data => {
+    //add sample data to db
+    /* sampleData.forEach(data => {
             new Course(data).save()
         }) */
 
-        //các lấy dữ liệu từ databáe bằng mongoose bằng hàm find()
-        /* Course.find({}, (err, courses) => {
+    //các lấy dữ liệu từ databáe bằng mongoose bằng hàm find()
+    /* Course.find({}, (err, courses) => {
             if(!err) {
                 res.json(courses)
             }else{
@@ -48,24 +46,27 @@ class SiteController {
             }
         }) */
 
-        //cách fetch api bằng promise
-        Course.find({})
-            .then(courses => {
-                res.render('home', {
-                    title: 'Home',
-                    courses: multipleMongooseToObject(courses),
-                    /* courses, //cách viết nhanh courses */
-                })
-            })
-            .catch(next)  // cách viêt này tắt của e => next(e)
+    //cách fetch api bằng promise
+    Course.find({})
+      .then((courses) => {
+        res.render('home', {
+          title: 'Home',
+          courses: multipleMongooseToObject(courses),
+        });
+      })
+      .catch(next); // cách viêt này tắt của e => next(e)
 
-        //res.render('home', {title: 'Homepage'})
-    }
+    //res.render('home', {title: 'Homepage'})
+  }
 
-    //[GET] /search
-    search(req, res){
-        res.send('search')
-    }
+  //[GET] /search
+  search(req, res) {
+    Promise.all([Course.find({}), Course.countDocumentsDeleted()]).then(
+      ([courses]) => {
+        res.json(multipleMongooseToObject(courses));
+      }
+    );
+  }
 }
 
-module.exports = new SiteController
+module.exports = new SiteController();
