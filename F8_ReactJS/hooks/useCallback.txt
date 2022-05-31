@@ -1,4 +1,4 @@
- - giải quyết vấn đề re-render của component con như momo nhưng trong trường 
+ - giải quyết vấn đề re-render của component con như memo nhưng trong trường 
  hợp là function. Vì function là kiểu dữ liệu tham chiếu, nên mỗi lần 
  re-render thì arrow function được tạo ra thì luôn tạo ra một địa chỉ khác, 
  khi đó truyền function qua props để component con xử lí, thì mỗi lần 
