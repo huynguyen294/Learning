@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600&family=Montserrat:wght@100;300;400;500;600&family=Quicksand:wght@100;200;300;400;500;600&family=Roboto:wght@100;300;400;500;600&display=swap&family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap&family=Comfortaa:wght@100;200;300;400;500;600;700&family=Grandstander:wght@100;200;300;400;500;600;700');
+/* Reset css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul, h1, h2, h3, p{
+  padding: 0;
+  margin: 0;
+}
+
+/* set defaut */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}

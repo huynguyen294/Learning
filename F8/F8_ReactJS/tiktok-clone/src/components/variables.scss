@@ -1,0 +1,29 @@
+$light-background-color: rgba(161, 201, 241, 0.1);
+$light-primary-color: rgba(255, 198, 201, 0.8);
+$light-secondary-color: rgba(252, 231, 233, 0.5);
+$light-secondary-color-solid: rgb(250, 229, 233);
+$light-third-color: rgba(252, 231, 233, 0.4);
+$light-shadow-color: rgba(0, 0, 0, 0.1);
+$light-color: #000;
+$dark-background-color: #24272c;
+$dark-primary-color: rgba(27, 29, 33, 0.7);
+$dark-secondary-color: rgba(73, 78, 89, 0.8);
+$dark-secondary-color-solid: rgb(58,62,71);
+$dark-el-primary-color: rgba(255, 122, 0, 1);
+$dark-el-secondary-color: rgb(204, 146, 92);
+$dark-shadow-color: rgba(0, 0, 0, 0.2);
+$dark-line-color: rgba(255, 255, 255, 0.6);
+$dark-color: #fff;
+
+$price-color: rgb(255, 77, 0);
+$link-color: #0247FE;
+
+@keyframes subMenuUp {
+    from{
+      transform: translateY(50px);
+      opacity: 0;
+    }to{
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  } 
