@@ -41,7 +41,7 @@ class userController {
       const oldUser = await UserModal.findOne({ email });
 
       if (oldUser) {
-        return res.status(400).json({ message: 'user already exits' });
+        return res.status(400).json({ message: 'User already exits' });
       }
 
       const hashedPassword = await bcrypt.hash(password, 12);
