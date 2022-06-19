@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 import { Provider } from 'react-redux';
 
 import './index.css';

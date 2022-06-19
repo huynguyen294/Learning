@@ -1,5 +1,5 @@
-import aixos from 'aixos';
+import axios from 'axios';
 
-const API = aixos.create({ baseURL: 'http://localhost:8080' });
+const API = axios.create({ baseURL: 'http://localhost:8080' });
 
-export const signin = (formData) => API.post('/users/signin');
+export const signin = (formData) => API.post('/users/signin', formData);

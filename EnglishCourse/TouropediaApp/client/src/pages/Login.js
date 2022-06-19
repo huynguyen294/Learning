@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import {
   MDBCard,
   MDBCardBody,
@@ -10,8 +10,11 @@ import {
   MDBSpinner,
   MDBValidationItem,
 } from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
+import { login } from '../redux/features';
 
 const initialState = {
   email: '',
@@ -21,9 +24,19 @@ const initialState = {
 function Login() {
   const [formValue, setFormValue] = useState(initialState);
   const { email, password } = formValue;
+  const { loading, error } = useSelector((state) => ({ ...state.auth }));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (email && password) {
+      dispatch(login({ formValue, navigate, toast }));
+    }
   };
 
   const onInputChange = (e) => {
@@ -81,6 +94,14 @@ function Login() {
                 }}
                 className="mt-2"
               >
+                {loading && (
+                  <MDBSpinner
+                    size="sm"
+                    role="status"
+                    tag="span"
+                    className="me-2"
+                  />
+                )}
                 Login
               </MDBBtn>
             </div>

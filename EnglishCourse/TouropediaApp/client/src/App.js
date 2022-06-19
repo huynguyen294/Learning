@@ -1,17 +1,16 @@
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Rovid } from 'react-redux';
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
-import store from './redux/store';
-import { Home, Login, Register } from './pages';
+import { Home, Login, Register, CheckLogin } from './pages';
+import { useSelector } from 'react-redux';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <ToastContainer />
+        <CheckLogin />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
