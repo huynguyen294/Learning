@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   MDBCard,
   MDBCardBody,
@@ -14,7 +14,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { register } from '../redux/features';
+import { register, authActions } from '../redux/features';
 
 const initialState = {
   firstName: '',
@@ -25,6 +25,7 @@ const initialState = {
 };
 
 function Register() {
+  const { resetError } = authActions;
   const [formValue, setFormValue] = useState(initialState);
   const { email, password, firstName, lastName, confirmPassword } = formValue;
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
@@ -32,18 +33,14 @@ function Register() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    return () => {
-      setFormValue(initialState);
-    };
-  }, []);
-
-  useEffect(() => {
     error && toast.error(error);
+    return () => {
+      dispatch(resetError());
+    };
   }, [error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName && lastName && email && password && confirmPassword);
     if (firstName && lastName && email && password && confirmPassword) {
       if (password === confirmPassword) {
         dispatch(register({ formValue, navigate, toast }));

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj": {}
+    "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\.NET-core\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj": {
+    "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\.NET-core\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\.NET-core\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj",
         "projectName": "FirstWebAPI",
-        "projectPath": "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj",
+        "projectPath": "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\.NET-core\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj",
         "packagesPath": "C:\\Users\\tkngu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\FirstWebAPI\\FirstWebAPI\\obj\\",
+        "outputPath": "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\.NET-core\\FirstWebAPI\\FirstWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tkngu\\AppData\\Roaming\\NuGet\\NuGet.Config",

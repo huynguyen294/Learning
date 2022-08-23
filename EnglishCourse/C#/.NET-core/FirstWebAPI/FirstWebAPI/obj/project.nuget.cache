@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F6dxbQIpzKPcBob0fTyRj/FdxN9cx5clBE0/sQnoC0R2FrpbjVLhLtjxuDEoT7892wboI4WgPKtpGc5SyyhARg==",
+  "dgSpecHash": "4ZNZbMozXWPZPP/+TqI37zfekBX9HRgBIFMnD04XL5k4UC9VxTwPU8siWl8c7uP3VqghxY+lAt7yNn77PpHBBA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj",
+  "projectFilePath": "C:\\Users\\tkngu\\Workpace\\Learning\\EnglishCourse\\C#\\.NET-core\\FirstWebAPI\\FirstWebAPI\\FirstWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tkngu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\tkngu\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

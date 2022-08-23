@@ -1,8 +1,7 @@
 import { memo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function CheckLogin() {
-  const user = localStorage.getItem('profile');
+function CheckLogin({ user }) {
   const navigate = useNavigate();
 
   useEffect(() => {

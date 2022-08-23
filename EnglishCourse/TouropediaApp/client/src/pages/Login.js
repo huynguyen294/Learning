@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   MDBCard,
   MDBCardBody,
@@ -13,8 +13,9 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { GoogleLogin } from 'react-google-login';
 
-import { login } from '../redux/features';
+import { login, authActions } from '../redux/features';
 
 const initialState = {
   email: '',
@@ -22,6 +23,7 @@ const initialState = {
 };
 
 function Login() {
+  const { resetError } = authActions;
   const [formValue, setFormValue] = useState(initialState);
   const { email, password } = formValue;
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
@@ -30,6 +32,9 @@ function Login() {
 
   useEffect(() => {
     error && toast.error(error);
+    return () => {
+      dispatch(resetError());
+    };
   }, [error]);
 
   const handleSubmit = (e) => {
@@ -43,6 +48,10 @@ function Login() {
     let { name, value } = e.target;
     setFormValue({ ...formValue, [name]: value });
   };
+
+  const googleSuccess = () => {};
+  const googleFailure = () => {};
+
   return (
     <div
       style={{
@@ -106,6 +115,23 @@ function Login() {
               </MDBBtn>
             </div>
           </MDBValidation>
+          <br />
+          <GoogleLogin
+            clientId="..."
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy="single_host_origin"
+            render={(renderProps) => (
+              <MDBBtn
+                style={{ width: '100%' }}
+                color={'danger'}
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                <MDBIcon className="me-2" fab icon="google" /> Google Sign In
+              </MDBBtn>
+            )}
+          />
         </MDBCardBody>
         <MDBCardFooter>
           <Link to={'/register'}>
@@ -117,4 +143,4 @@ function Login() {
   );
 }
 
-export default memo(Login);
+export default Login;

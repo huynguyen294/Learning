@@ -1,0 +1,8 @@
+C:\Users\tkngu\Workpace\Learning\EnglishCourse\C#\LearnBasic\LearnBasic\bin\Debug\LearnBasic.exe.config
+C:\Users\tkngu\Workpace\Learning\EnglishCourse\C#\LearnBasic\LearnBasic\bin\Debug\LearnBasic.exe
+C:\Users\tkngu\Workpace\Learning\EnglishCourse\C#\LearnBasic\LearnBasic\bin\Debug\LearnBasic.pdb
+C:\Users\tkngu\Workpace\Learning\EnglishCourse\C#\LearnBasic\LearnBasic\obj\Debug\LearnBasic.csproj.AssemblyReference.cache
+C:\Users\tkngu\Workpace\Learning\EnglishCourse\C#\LearnBasic\LearnBasic\obj\Debug\LearnBasic.csproj.SuggestedBindingRedirects.cache
+C:\Users\tkngu\Workpace\Learning\EnglishCourse\C#\LearnBasic\LearnBasic\obj\Debug\LearnBasic.csproj.CoreCompileInputs.cache
+C:\Users\tkngu\Workpace\Learning\EnglishCourse\C#\LearnBasic\LearnBasic\obj\Debug\LearnBasic.exe
+C:\Users\tkngu\Workpace\Learning\EnglishCourse\C#\LearnBasic\LearnBasic\obj\Debug\LearnBasic.pdb

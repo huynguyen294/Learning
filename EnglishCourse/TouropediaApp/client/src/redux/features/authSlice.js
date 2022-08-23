@@ -38,6 +38,11 @@ const authSlice = createSlice({
     error: '',
     loading: false,
   },
+  reducers: {
+    resetError: (state, action) => {
+      state.error = '';
+    },
+  },
   extraReducers: {
     [login.pending]: (state, action) => {
       state.loading = true;
@@ -64,4 +69,5 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice.reducer;
+export const authReducer = authSlice.reducer;
+export const authActions = authSlice.actions;
