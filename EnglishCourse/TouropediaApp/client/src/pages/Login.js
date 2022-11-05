@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   MDBCard,
   MDBCardBody,
@@ -9,17 +9,21 @@ import {
   MDBBtn,
   MDBSpinner,
   MDBValidationItem,
-} from 'mdb-react-ui-kit';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
-import { GoogleLogin } from 'react-google-login';
+} from "mdb-react-ui-kit";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { GoogleLogin } from "react-google-login";
+import { loadGapiInsideDOM } from "gapi-script";
 
-import { login, authActions } from '../redux/features';
+import { login, authActions, loginWithGoogle } from "../redux/features";
+
+const CLIENT_ID =
+  "470377450765-ntrhseunm8mh77cvgpern3ikdi05dknt.apps.googleusercontent.com";
 
 const initialState = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
 function Login() {
@@ -29,13 +33,6 @@ function Login() {
   const { loading, error } = useSelector((state) => ({ ...state.auth }));
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    error && toast.error(error);
-    return () => {
-      dispatch(resetError());
-    };
-  }, [error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,17 +46,40 @@ function Login() {
     setFormValue({ ...formValue, [name]: value });
   };
 
-  const googleSuccess = () => {};
-  const googleFailure = () => {};
+  const googleSuccess = (res) => {
+    if (res && res.profileObj) {
+      const { email, name, googleId } = res.profileObj;
+      const tokenId = res.tokenId;
+      const result = { email, name, googleId, tokenId };
+
+      dispatch(loginWithGoogle({ result, navigate, toast }));
+    }
+  };
+  const googleFailure = (error) => {
+    console.log(error);
+  };
+
+  useEffect(() => {
+    error && toast.error(error);
+    return () => {
+      dispatch(resetError());
+    };
+  }, [error]);
+
+  useEffect(() => {
+    (async () => {
+      await loadGapiInsideDOM();
+    })();
+  });
 
   return (
     <div
       style={{
-        margin: 'auto',
-        padding: '15px',
-        maxWidth: '450px',
-        alignContent: 'center',
-        marginTop: '120px',
+        margin: "auto",
+        padding: "15px",
+        maxWidth: "450px",
+        alignContent: "center",
+        marginTop: "120px",
       }}
       className="login"
     >
@@ -99,7 +119,7 @@ function Login() {
             <div className="col-12">
               <MDBBtn
                 style={{
-                  width: '100%',
+                  width: "100%",
                 }}
                 className="mt-2"
               >
@@ -117,14 +137,14 @@ function Login() {
           </MDBValidation>
           <br />
           <GoogleLogin
-            clientId="..."
+            clientId={CLIENT_ID}
             onSuccess={googleSuccess}
             onFailure={googleFailure}
             cookiePolicy="single_host_origin"
             render={(renderProps) => (
               <MDBBtn
-                style={{ width: '100%' }}
-                color={'danger'}
+                style={{ width: "100%" }}
+                color={"danger"}
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
               >
@@ -134,7 +154,7 @@ function Login() {
           />
         </MDBCardBody>
         <MDBCardFooter>
-          <Link to={'/register'}>
+          <Link to={"/register"}>
             <p>Don't have an account? Sign Up</p>
           </Link>
         </MDBCardFooter>

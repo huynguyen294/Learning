@@ -1,13 +1,13 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { signin, signup } from '../api';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { signIn, signUp, googleSignIn } from "../../api";
 
 export const login = createAsyncThunk(
-  'auth/login',
+  "auth/login",
   async ({ formValue, navigate, toast }, { rejectWithValue }) => {
     try {
-      const res = await signin(formValue);
-      toast.success('Login Successfully');
-      navigate('/');
+      const res = await signIn(formValue);
+      toast.success("Login Successfully");
+      navigate("/");
 
       return res.data;
     } catch (error) {
@@ -17,12 +17,12 @@ export const login = createAsyncThunk(
 );
 
 export const register = createAsyncThunk(
-  'auth/register',
+  "auth/register",
   async ({ formValue, navigate, toast }, { rejectWithValue }) => {
     try {
-      const res = await signup(formValue);
-      toast.success('Register successfully, You can login now.');
-      navigate('/login');
+      const res = await signUp(formValue);
+      toast.success("Register successfully, You can login now.");
+      navigate("/login");
 
       return res.data;
     } catch (error) {
@@ -31,16 +31,33 @@ export const register = createAsyncThunk(
   }
 );
 
+export const loginWithGoogle = createAsyncThunk(
+  "auth/google-sign-in",
+  async ({ result, navigate, toast }, { rejectWithValue }) => {
+    try {
+      const res = await googleSignIn(result);
+      console.log(res);
+      toast.success("Google sign in successfully, You can login now.");
+      navigate("/");
+
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState: {
     user: null,
-    error: '',
+    error: "",
     loading: false,
   },
   reducers: {
     resetError: (state, action) => {
-      state.error = '';
+      state.error = "";
     },
   },
   extraReducers: {
@@ -49,7 +66,7 @@ const authSlice = createSlice({
     },
     [login.fulfilled]: (state, action) => {
       state.loading = false;
-      localStorage.setItem('profile', JSON.stringify({ ...action.payload }));
+      localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
       state.user = action.payload;
     },
     [login.rejected]: (state, action) => {
@@ -63,6 +80,18 @@ const authSlice = createSlice({
       state.loading = false;
     },
     [register.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [loginWithGoogle.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [loginWithGoogle.fulfilled]: (state, action) => {
+      state.loading = false;
+      localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
+      state.user = action.payload;
+    },
+    [loginWithGoogle.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

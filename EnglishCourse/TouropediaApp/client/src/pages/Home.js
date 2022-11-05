@@ -1,15 +1,14 @@
-import { Link } from 'react-router-dom';
-import { CheckLogin } from '../components';
+import { Link } from "react-router-dom";
 
 function Home() {
-  const user = localStorage.getItem('profile');
+  const user = localStorage.getItem("profile");
+  console.log(user);
 
   return (
     <div className="home">
-      <CheckLogin user={user} />
       <h1>Home Page</h1>
       <Link
-        to={'/login'}
+        to={"/login"}
         onClick={() => {
           localStorage.clear();
         }}
