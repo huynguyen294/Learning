@@ -36,7 +36,6 @@ export const loginWithGoogle = createAsyncThunk(
   async ({ result, navigate, toast }, { rejectWithValue }) => {
     try {
       const res = await googleSignIn(result);
-      console.log(res);
       toast.success("Google sign in successfully, You can login now.");
       navigate("/");
 
@@ -58,6 +57,14 @@ const authSlice = createSlice({
   reducers: {
     resetError: (state, action) => {
       state.error = "";
+    },
+    setUser: (state, action) => {
+      console.log("set user...");
+      state.user = action.payload;
+    },
+    setLogout: (state, action) => {
+      console.log("logout...");
+      state.user = null;
     },
   },
   extraReducers: {

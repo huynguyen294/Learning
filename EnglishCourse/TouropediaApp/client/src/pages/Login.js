@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import {
   MDBCard,
@@ -30,7 +31,7 @@ function Login() {
   const { resetError } = authActions;
   const [formValue, setFormValue] = useState(initialState);
   const { email, password } = formValue;
-  const { loading, error } = useSelector((state) => ({ ...state.auth }));
+  const { loading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

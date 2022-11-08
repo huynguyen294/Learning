@@ -1,21 +1,11 @@
-import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
+import Header from "../components/Header";
 
 function Home() {
-  const user = localStorage.getItem("profile");
-  console.log(user);
-
   return (
-    <div className="home">
-      <h1>Home Page</h1>
-      <Link
-        to={"/login"}
-        onClick={() => {
-          localStorage.clear();
-        }}
-      >
-        Đăng xuất
-      </Link>
-    </div>
+    <Box sx={{ height: "200vh" }} className="home">
+      <Header />
+    </Box>
   );
 }
 
