@@ -1,9 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { authReducer } from './features';
+import { configureStore } from "@reduxjs/toolkit";
+import { authReducer, tourReducer } from "./features";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
+    tour: tourReducer,
   },
 });
 
