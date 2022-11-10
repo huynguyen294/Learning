@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      gap: 10px;
+    }
+
+    .menu {
+      flex: 3;
+      background-color: #eee;
+    }
+
+    .widgets {
+      flex: 7;
+      padding: 30px;
+      background-color: #eee;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .list-item {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+    }
+
+    .item {
+      max-width: 100%;
+      background-color: rgba(255, 255, 255, 0.7);
+      height: auto;
+      border-radius: 5px;
+      font-size: 20px;
+      padding: 20px;
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="menu"></div>
+      <div class="widgets"></div>
+    </div>
+  </body>
+
+  <script>
+    const widgets = document.querySelector(".widgets");
+
+    const data = [
+      `Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, eos.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, eos.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, eos.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+      `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus
+        similique repellendus suscipit illum accusamus ad dolore tempore modi
+        aliquam, a fuga sed nulla vero doloribus! Voluptatem qui laudantium unde
+        quam dolor quibusdam quas asperiores repudiandae.`,
+    ];
+
+    const toThreePart = (data) => {
+      const size = data.length / 3;
+      const array1 = data.splice(0, size + 1);
+      const array2 = data.splice(0, size);
+      const array3 = data;
+      return { array1, array2, array3 };
+    };
+
+    const { array1, array2, array3 } = toThreePart(data);
+
+    const generateChilrens = (array1, array2, array3) => {
+      return [
+        `<div class="list-item">${array1
+          .map((item) => `<div class="item">${item}</div>`)
+          .join("")}</div>`,
+        `<div class="list-item">${array2
+          .map((item) => `<div class="item">${item}</div>`)
+          .join("")}</div>`,
+        `<div class="list-item">${array3
+          .map((item) => `<div class="item">${item}</div>`)
+          .join("")}</div>`,
+      ].join("");
+    };
+
+    const childrens = generateChilrens(array1, array2, array3);
+
+    widgets.innerHTML = childrens;
+  </script>
+</html>

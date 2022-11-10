@@ -114,7 +114,6 @@ const Header = () => {
           </Box>
         </Toolbar>
       </AppBar>
-      <h1>Home Page</h1>
     </Box>
   );
 };

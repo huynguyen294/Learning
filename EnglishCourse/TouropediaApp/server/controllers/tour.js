@@ -6,6 +6,7 @@ class tourController {
     const tour = req.body;
     const newTour = new TourModal({
       ...tour,
+      creator: req.userId,
       createAt: new Date().toISOString(),
     });
 
