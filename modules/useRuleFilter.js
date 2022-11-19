@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
 import moment from "moment";
 import { intervalToDuration } from "date-fns";
 import _ from "lodash";
 import useDataStore from "@/state/data";
 import shallow from "zustand/shallow";
 
-const useCompareAssignation = (rules) => {
+const useRuleFilter = (rules) => {
   const { tei, event, enr, events } = useDataStore(
     (state) => ({
       tei: state.tei,
+      enr: state.enr,
       event: state.event,
       events: state.events,
-
-  const [compareResults, setCompareResults] = useState([]);
+    }),
+    shallow
+  );
 
   const runExpression = (expression) => {
     let compiled = _.template(`<%= ${expression} %>`, {
@@ -43,13 +44,14 @@ const useCompareAssignation = (rules) => {
 
   const compareActions = (actions) => {
     let newActions = [];
+
     actions.forEach((action) => {
       const dataElement = action.target;
       const value = runExpression(action.value);
       const valid = compareValue(dataElement, value);
 
       if (valid) {
-        newActions.push(action);
+        newActions.push(_.cloneDeep(action));
       }
     });
 
@@ -73,17 +75,9 @@ const useCompareAssignation = (rules) => {
     return resultRules;
   };
 
-  useEffect(() => {
-    const resultRules = runCompare();
-    setCompareResults(resultRules);
-  }, [
-    JSON.stringify(tei),
-    JSON.stringify(enr),
-    JSON.stringify(event),
-    JSON.stringify(events),
-  ]);
+  const resultRules = runCompare();
 
-  return compareResults;
+  return resultRules;
 };
 
-export default useCompareAssignation;
+export default useRuleFilter;

@@ -165,6 +165,60 @@
         quam dolor quibusdam quas asperiores repudiandae.`,
     ];
 
+    const data2 = [
+      "Lorem, ipsum dolor.",
+      "Lorem, ipsum dolor.",
+      "Lorem, ipsum dolor.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem, ipsum dolor.",
+      "Lorem, ipsum dolor.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+      "Lorem, ipsum.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet.",
+      "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+    ];
+
+    const addIndex = (data) => data.map((item, idx) => idx + 1 + ". " + item);
+
     const toThreePart = (data) => {
       const size = data.length / 3;
       const array1 = data.splice(0, size + 1);
@@ -173,23 +227,40 @@
       return { array1, array2, array3 };
     };
 
-    const { array1, array2, array3 } = toThreePart(data);
+    const horizontalDivision = (data, time) => {
+      const size = Math.round(data.length / time);
 
-    const generateChilrens = (array1, array2, array3) => {
-      return [
-        `<div class="list-item">${array1
-          .map((item) => `<div class="item">${item}</div>`)
-          .join("")}</div>`,
-        `<div class="list-item">${array2
-          .map((item) => `<div class="item">${item}</div>`)
-          .join("")}</div>`,
-        `<div class="list-item">${array3
-          .map((item) => `<div class="item">${item}</div>`)
-          .join("")}</div>`,
-      ].join("");
+      const itemList = [];
+      for (let i = 0; i < time; i++) {
+        itemList.push([]);
+      }
+
+      for (let j = 0; j < data.length; j += time) {
+        for (let i = 0; i < time; i++) {
+          if (data[j + i]) {
+            itemList[i].push(data[j + i]);
+          }
+        }
+      }
+
+      return itemList;
     };
 
-    const childrens = generateChilrens(array1, array2, array3);
+    const indexAddedData = addIndex(data2);
+    const arrays = horizontalDivision(indexAddedData.reverse(), 5);
+    //const { array1, array2, array3 } = toThreePart(indexAddedData);
+
+    const generateChilrens = (arrays) =>
+      arrays
+        .map(
+          (array) =>
+            `<div class="list-item">${array
+              .map((item) => `<div class="item">${item}</div>`)
+              .join("")}</div>`
+        )
+        .join("");
+
+    const childrens = generateChilrens(arrays);
 
     widgets.innerHTML = childrens;
   </script>
