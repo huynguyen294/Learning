@@ -15,6 +15,8 @@ const useRuleFilter = (rules) => {
     shallow
   );
 
+  const foundEvent = events.find((ev) => ev.event === event.event);
+
   const runExpression = (expression) => {
     let compiled = _.template(`<%= ${expression} %>`, {
       imports: {
@@ -30,8 +32,6 @@ const useRuleFilter = (rules) => {
   };
 
   const compareValue = (dataElement, value) => {
-    const foundEvent = events.find((ev) => ev.event === event.event);
-
     if (
       foundEvent.dataValues[dataElement] === value ||
       (foundEvent.dataValues[dataElement] === undefined && value === "")
@@ -42,42 +42,43 @@ const useRuleFilter = (rules) => {
     return true;
   };
 
-  const compareActions = (actions) => {
-    let newActions = [];
+  const actionFilter = (actions) => {
+    const newActions = _.cloneDeep(actions);
 
-    actions.forEach((action) => {
+    return newActions.filter((action) => {
       const dataElement = action.target;
       const value = runExpression(action.value);
+
+      if (action.type !== "ASSIGN_VALUE") {
+        return true;
+      }
+
       const valid = compareValue(dataElement, value);
 
       if (valid) {
-        newActions.push(_.cloneDeep(action));
+        return true;
       }
-    });
 
-    return newActions;
+      return false;
+    });
   };
 
-  const runCompare = () => {
-    let resultRules = [];
+  const newRules = _.cloneDeep(rules);
 
-    rules.forEach((rule) => {
+  return newRules
+    .map((rule) => {
       let result = runExpression(rule.expression);
-      if (result === "true") {
-        resultRules.push(_.cloneDeep(rule));
+      if (result !== "true") {
+        return;
       }
-    });
 
-    resultRules.forEach((rule, idx) => {
-      rule.actions = compareActions(rule.actions);
-    });
-
-    return resultRules;
-  };
-
-  const resultRules = runCompare();
-
-  return resultRules;
+      const newActions = actionFilter(rule.actions);
+      return {
+        ...rule,
+        actions: newActions,
+      };
+    })
+    .filter(Boolean);
 };
 
 export default useRuleFilter;
