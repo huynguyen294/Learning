@@ -1,12 +1,12 @@
-const userRoute = require("./user.js");
-const tourRoute = require("./tour.js");
+import userRoute from "./user.js";
+import tourRoute from "./tour.js";
 
-function route(app) {
+const route = (app) => {
   app.use("/users", userRoute);
   app.use("/tours", tourRoute);
   app.get("/", (req, res) => {
     res.send("Hello");
   });
-}
+};
 
-module.exports = route;
+export default route;

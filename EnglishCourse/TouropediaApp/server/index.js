@@ -1,15 +1,15 @@
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
+import express from "express";
+import cors from "cors";
+import morgan from "morgan";
+
+import connect from "./configs/db/index.js";
+import route from "./routes/index.js";
 
 const port = 8080;
 
 const app = express();
 
-const db = require("./configs/db");
-const route = require("./routes");
-
-db.connect();
+connect();
 
 app.use(morgan("dev"));
 app.use(express.json({ limit: "30mb", extended: true }));

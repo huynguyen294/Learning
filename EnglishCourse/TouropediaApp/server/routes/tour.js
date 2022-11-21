@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
+import { creatorTour, getTour } from "../controllers/tour.js";
+import auth from "../middleware/auth.js";
+
 const router = express.Router();
 
-const tourController = require("../controllers/tour.js");
-const { default: auth } = require("../middleware/auth.js");
+router.post("/", auth, creatorTour);
+router.get("/", getTour);
 
-router.post("/", auth, tourController.creatorTour);
-router.get("/", tourController.getTour);
-
-module.exports = router;
+export default router;

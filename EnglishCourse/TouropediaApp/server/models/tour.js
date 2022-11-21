@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const tourSchema = mongoose.Schema({
   title: String,
@@ -17,4 +17,6 @@ const tourSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Tour", tourSchema);
+const TourModal = mongoose.model("Tour", tourSchema);
+
+export default TourModal;

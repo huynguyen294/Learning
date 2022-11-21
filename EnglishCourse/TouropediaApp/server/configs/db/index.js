@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
 const MONGODB_URL =
   "mongodb+srv://admin:00000000@cluster0.r9esu.mongodb.net/?retryWrites=true&w=majority";
 
@@ -15,4 +16,4 @@ async function connect() {
   }
 }
 
-module.exports = { connect };
+export default connect;

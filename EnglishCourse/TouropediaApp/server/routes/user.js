@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
+import { signIn, signUp, googleSignIn } from "../controllers/user.js";
+
 const router = express.Router();
 
-const userController = require("../controllers/user.js");
+router.post("/sign-up", signIn);
+router.post("/sign-in", signIn);
+router.post("/google-sign-in", googleSignIn);
 
-router.post("/sign-up", userController.signUp);
-router.post("/sign-in", userController.signIn);
-router.post("/google-sign-in", userController.googleSignIn);
-
-module.exports = router;
+export default router;
