@@ -90,3 +90,16 @@ export const getCustomExpression = (handler, externalData = undefined) => {
 // const ExpressionHandler = (handleData) => {
 //   console.log(handleData, event);
 // };
+
+//standard report
+const openInNewTab = (href) => {
+  const a = Object.assign(document.createElement("a"), {
+    target: "_blank",
+    rel: "noopener noreferrer",
+    href: href,
+  });
+
+  window.parent.document.querySelector("main").appendChild(a);
+  a.click();
+  window.parent.document.querySelector("main").removeChild(a);
+};
