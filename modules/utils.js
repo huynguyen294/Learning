@@ -103,3 +103,87 @@ const openInNewTab = (href) => {
   a.click();
   window.parent.document.querySelector("main").removeChild(a);
 };
+
+//masonry divider
+export const divider = (arr, time) => {
+  const newArr = [...arr];
+  const size = Math.round(newArr.length / time);
+
+  const itemList = [];
+  for (let i = 1; i < time; i++) {
+    itemList.push(newArr.splice(0, size));
+  }
+
+  itemList.push(newArr);
+
+  return itemList;
+};
+
+export const horizontalDivider = (data, time) => {
+  const itemList = [];
+  for (let i = 0; i < time; i++) {
+    itemList.push([]);
+  }
+
+  for (let j = 0; j < data.length; j += time) {
+    for (let i = 0; i < time; i++) {
+      if (data[j + i]) {
+        itemList[i].push(data[j + i]);
+      }
+    }
+  }
+
+  return itemList;
+};
+
+//generate id
+const sample = (d, fn = Math.random) => {
+  if (d.length === 0) {
+    return;
+  }
+  return d[Math.round(fn() * (d.length - 1))];
+};
+
+const generateUid = (limit = 11, fn = Math.random) => {
+  const allowedLetters = [
+    "abcdefghijklmnopqrstuvwxyz",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  ].join("");
+  const allowedChars = ["0123456789", allowedLetters].join("");
+  const arr = [sample(allowedLetters, fn)]; // sample 1 to make sure it starts with a letter
+  for (let i = 0; i < limit - 1; i++) {
+    arr.push(sample(allowedChars, fn));
+  }
+  return arr.join("");
+};
+
+export { generateUid };
+
+//table sort
+export const descendingComparator = (a, b, orderBy) => {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+};
+
+export const getComparator = (order, orderBy) => {
+  return order === "desc"
+    ? (a, b) => descendingComparator(a, b, orderBy)
+    : (a, b) => -descendingComparator(a, b, orderBy);
+};
+
+export const stableSort = (array, comparator) => {
+  const stabilizedThis = array.map((el, index) => [el, index]);
+  stabilizedThis.sort((a, b) => {
+    const order = comparator(a[0].cellData, b[0].cellData);
+    if (order !== 0) {
+      return order;
+    }
+    return a[1] - b[1];
+  });
+  return stabilizedThis.map((el) => el[0]);
+};
